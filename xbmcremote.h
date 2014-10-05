@@ -19,6 +19,7 @@ public:
     void sendButton( char *button, char *keymap);
     void sendMouse(int x, int y);
     void sendNotification(char *caption, char *message, int iconType, char *iconPath);
+    void sendButtonNumber(int button, bool press);
 private:
     CAddress *address;
     char *deviceName;

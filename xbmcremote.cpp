@@ -43,3 +43,8 @@ void XBMCRemote::sendNotification(char *caption, char *message, int iconType, ch
     CPacketNOTIFICATION packet(caption,message,iconType,iconPath);    // icon file (local)      packet.Send(sockfd, my_addr);
     packet.Send(sockfd, *address);
 }
+
+void XBMCRemote::sendButtonNumber(int button, bool press){
+    CPacketBUTTON packet(button, press);
+    packet.Send(sockfd, *address);
+}
