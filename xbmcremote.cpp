@@ -1,6 +1,6 @@
 #include "xbmcremote.h"
 #include "xbmcclient.h"
-
+#include <sys/types.h>
 
 XBMCRemote::XBMCRemote(char* deviceName, char* addr, int port)
 {
@@ -35,7 +35,7 @@ void XBMCRemote::sendButton(char *button, char *keymap){
     packet.Send(sockfd, *address);
 }
 
-void XBMCRemote::sendMouse(int x, int y){
+void XBMCRemote::sendMouse(uint16_t x, uint16_t y){
     CPacketMOUSE packet(x,y);
     packet.Send(sockfd, *address);
 }
@@ -45,6 +45,6 @@ void XBMCRemote::sendNotification(char *caption, char *message, int iconType, ch
 }
 
 void XBMCRemote::sendButtonNumber(int button, bool press){
-    CPacketBUTTON packet(button, press);
+    CPacketBUTTON packet(button, "KB", press);
     packet.Send(sockfd, *address);
 }
