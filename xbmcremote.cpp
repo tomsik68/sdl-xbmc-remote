@@ -39,12 +39,13 @@ void XBMCRemote::sendMouse(uint16_t x, uint16_t y){
     CPacketMOUSE packet(x,y);
     packet.Send(sockfd, *address);
 }
+
 void XBMCRemote::sendNotification(char *caption, char *message, int iconType, char *iconPath){
     CPacketNOTIFICATION packet(caption,message,iconType,iconPath);    // icon file (local)      packet.Send(sockfd, my_addr);
     packet.Send(sockfd, *address);
 }
 
 void XBMCRemote::sendButtonNumber(int button, bool press){
-    CPacketBUTTON packet(button, "KB", press);
+    CPacketBUTTON packet(button, "KB", (press ? BTN_DOWN : BTN_UP) | BTN_VKEY);
     packet.Send(sockfd, *address);
 }
