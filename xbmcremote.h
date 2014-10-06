@@ -17,7 +17,8 @@ public:
     void sayBye();
     void sendPing();
     void sendButton( char *button, char *keymap);
-    void sendMouse(uint16_t x, uint16_t y);
+    void sendMouseMove(uint16_t x, uint16_t y);
+    void sendMouseDown(int button);
     void sendNotification(char *caption, char *message, int iconType, char *iconPath);
     void sendButtonNumber(int button, bool press);
 private:

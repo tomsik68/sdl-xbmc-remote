@@ -4,6 +4,11 @@
 #include <SDL.h>
 #include "xbmcremote.h"
 
+// I don't know which header this is in on OpenPandora, so I'll just add ugly tempfix thing here:
+#ifndef UINT16_MAX
+    #define UINT16_MAX 65535
+#endif
+
 class InputWrapper
 {
 public:

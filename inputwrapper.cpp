@@ -59,7 +59,7 @@ void InputWrapper::processKeyDownEvent(SDL_Event *event){
 void InputWrapper::processKeyUpEvent(SDL_Event *event){
     switch(event->key.keysym.sym){
     default:
-        remote->sendButtonNumber(event->key.keysym.sym, true);
+        remote->sendButtonNumber(event->key.keysym.sym, false);
         break;
     }
 }
@@ -69,13 +69,13 @@ void InputWrapper::processMouseMoveEvent(SDL_Event *event){
     float relY = 1.f * event->motion.y / screenHeight;
     uint16_t absX = (uint16_t)(relX * UINT16_MAX);
     uint16_t absY = (uint16_t)(relY * UINT16_MAX);
-    remote->sendMouse(absX, absY);
+    remote->sendMouseMove(absX, absY);
 }
 
 void InputWrapper::processMouseDownEvent(SDL_Event *event){
-
+    remote->sendMouseDown(event->button.button);
 }
 
 void InputWrapper::processMouseUpEvent(SDL_Event *event){
-
+    remote->sendMouseDown(event->button.button);
 }

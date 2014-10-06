@@ -35,7 +35,7 @@ void XBMCRemote::sendButton(char *button, char *keymap){
     packet.Send(sockfd, *address);
 }
 
-void XBMCRemote::sendMouse(uint16_t x, uint16_t y){
+void XBMCRemote::sendMouseMove(uint16_t x, uint16_t y){
     CPacketMOUSE packet(x,y);
     packet.Send(sockfd, *address);
 }
@@ -47,5 +47,10 @@ void XBMCRemote::sendNotification(char *caption, char *message, int iconType, ch
 
 void XBMCRemote::sendButtonNumber(int button, bool press){
     CPacketBUTTON packet(button, "KB", (press ? BTN_DOWN : BTN_UP) | BTN_VKEY);
+    packet.Send(sockfd, *address);
+}
+
+void XBMCRemote::sendMouseDown(int button){
+    CPacketBUTTON packet(button, "MS", BTN_DOWN);
     packet.Send(sockfd, *address);
 }

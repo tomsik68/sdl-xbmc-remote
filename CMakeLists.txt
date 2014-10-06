@@ -11,8 +11,9 @@ include_directories(${INCLUDE_DIRS})
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 set(LIBRARIES ${SDL_LIBRARY})
-
-# OpenPandora: comment this line
-set(LIBRARIES ${LIBRARIES} ${SDLMAIN_LIBRARY})
+# if there's possibility to add SDLMain, do it...
+if(SDLMAIN_LIBRARY)
+    set(LIBRARIES ${LIBRARIES} ${SDLMAIN_LIBRARY})
+endif(SDLMAIN_LIBRARY)
 
 target_link_libraries( ${PROJECT_NAME} ${LIBRARIES})
